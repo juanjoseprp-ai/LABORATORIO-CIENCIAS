@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratorio Virtual de Ciencias JOSAFI - 2026</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#e6f9e0;--card:#f9fff6;--tx:#10321a;--mu:#3f6a4a;--ac:#0b7d3e;--ac2:#daf5d3;--bd:#a6e0ad;--ok:#0d7a2f;--ko:#c62828;--okb:#c8f5d0;--kob:#ffd9d6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:#15803d;color:var(--tx);font:16px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+.w{width:100%;max-width:none;margin:0;padding:12px clamp(12px,2.5vw,40px);min-height:100vh}
+h1{font:900 clamp(1.7rem,6vw,3rem)/1.1 "Trebuchet MS","Segoe UI",system-ui,sans-serif;margin:8px 0;text-align:center;letter-spacing:.5px;color:#fff;text-transform:uppercase;letter-spacing:1.5px;-webkit-text-stroke:2px #fff;paint-order:stroke fill}
+h2{font:700 1.25rem Georgia,serif;margin:0 0 8px}
+.mu{color:var(--mu);margin:0 0 10px}
+nav,.sp{display:flex;gap:8px;overflow-x:auto;padding:6px 0}
+button{font:inherit;cursor:pointer;border:2px solid #1e88e5;background:linear-gradient(135deg,#29b6f6,#1e88e5);color:#fff;font-weight:700;border-radius:12px;padding:8px 14px;white-space:nowrap;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+button.on{background:var(--ac);border-color:var(--ac);color:var(--bg);font-weight:700}
+.sp button{flex:1;border-radius:0;border-width:0 0 3px;background:none;padding:8px 6px}
+.sp button{color:#fff;border-color:#86efac;box-shadow:none}.sp button.on{background:#fff3a8;color:#d81b60;border-color:#d81b60;border-radius:10px 10px 0 0}
+.b{background:var(--ac2);color:var(--ac);border-radius:8px;padding:0 6px;font-size:.8em}
+nav .on .b{background:var(--bg);color:var(--ac)}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px;margin-top:8px;align-items:start}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px}
+svg{width:100%;height:auto;max-height:68vh;display:block;border-radius:10px}
+label{display:block;margin:12px 0}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.ro{background:var(--ac2);border-radius:10px;padding:10px 12px;margin:12px 0}
+.q{border-left:4px solid var(--ac);padding-left:10px}
+.go{background:linear-gradient(135deg,#ff9800,#ff4081);border-color:#ff4081;color:#fff;font-weight:700;box-shadow:0 3px 0 #b0225a}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border-bottom:1px solid var(--bd);padding:6px 8px;text-align:left}
+.qz{margin:14px 0}
+.op{display:block;width:100%;text-align:left;margin:6px 0;white-space:normal;background:#fff9c4;border-color:#fbc02d;color:var(--tx);box-shadow:none}
+.op.ok{background:var(--okb);border-color:var(--ok);color:var(--ok)}
+.op.ko{background:var(--kob);border-color:var(--ko);color:var(--ko)}
+.fb{margin:6px 0 0;font-size:.95rem}
+.sc{font-weight:700;font-size:1.1rem}
+#pg{color:#fff;font-weight:700}
+nav button{--k:#1e88e5;background:#fff;color:var(--k);border-color:var(--k)}
+nav button:nth-child(2){--k:#f57c00}nav button:nth-child(3){--k:#8e24aa}nav button:nth-child(4){--k:#d81b60}nav button:nth-child(5){--k:#2e7d32}nav button:nth-child(6){--k:#e53935}
+nav button.on{background:var(--k);color:#fff;transform:translateY(-2px)}
+[hidden]{display:none!important}
+.op.sel{background:#ffd54f;border-color:#f57f17;font-weight:700}button:disabled{opacity:.5;cursor:not-allowed}.danger{background:linear-gradient(135deg,#ef5350,#c62828);border-color:#c62828}
+input[type=text],input[type=password],select{font:inherit;padding:8px 10px;border:2px solid #0b7d3e;border-radius:10px;width:100%;background:#fff;color:var(--tx)}
+.id{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:10px}.id label{margin:0;font-weight:700}
+.rs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.rs button{white-space:normal;text-align:left}#idb{margin:10px 0}.tabs{display:flex;gap:8px;margin:8px 0;align-items:center}.fs{margin-left:auto}.hd{--logo:url("data:image/png;base64,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a/CjoqmhINCbHTads3QQD50jH6zCXMhYL9/g26XX6enMJtikbdrQZhwcHQAArW1pLLJlBwAA/yuTOydfM5CJJdsSGDVcQxqr1nnOH4N8J7HFrf+9Be/imiWKRMG4HP8AAL+/wEM8NkI/QESzyfN9gSEhQh1ymKY9QIB/gPm/wf7zEQCu7+0yNxswHvz9/QAAAdiVafSoLOfn6AWx8Pm3Ns2JKtCLY9iWKueaKewoMdHEGfjrD+Wjc+Gcbu3aEcyHW9oqNy00L1DH8xMpGhadxg8kINA0NrDl+XLS9Wupb/rLESq78bV6JhwyJdS3HI3b97EzNf//AE00M3EzNMns+Nfy+2+HVO6mS7KJZa+HLNbY06+FWU2HS9XTsSAyHo8zNMdzKdvRJosCAq94VfnHyNSWVNDNkSV2PX9/AKgBAchpLJWWlbGTavFlacfHyPWanDnA8o+GVw2SNIOEHvfT03R2H2TN9M3EGu1ISyonJ3J2cqmnpxGINr+/ADOHRc6lKve2SNzSGPmoF7e4tPe3E+5UVxeo14uJiJF3UfuaGVRYKVNmUoppT8W8G+48QQAATxZ3Nymny2poJbOVKqqqAC94RJCWbOWcVJB5LzdFKvJ1eI+JZVF5TW55UPSHikpHSLCVT85FN8vKr3bIJ6ukILuzHQAAcZqTIxRpMG6HcMzHTFJWT7WsHse4tPi2uOjo13hzKXCYic+mTNbKNyeIPC+yzZGLJescI5qEL7NYSVG2sMr6juwAAADIdFJOU///////JP//+///H///kP///////////////wRDAwL//2P/////Vf8D//+9Af8o////F//////+/////wD/////////////7f7///7///////////////////////8C/////////////////////////////wL//////////////////9j//////wT////3///////////////J/w//////A////////////////////5KxCHT/////pf///0n//////2b/////ws/FbQAANDRJREFUeNrtnYlDU1f2+ANCkEVwqdZabWvtt+vMd/ltgCEQSQhkMXFM8jUqkSWGhIozqSMtFMFakEUspRW+IuMK1RHqUnft1K22+m/9zjn33rckD0wgUGo9M4bkJXn3fu7Z73sU3eJr/15SUrLrSHPJ/Mm5XSUl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");display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,28px)}.hd h1{flex:1;min-width:0}.logo{flex:none;height:clamp(64px,11vw,130px);aspect-ratio:245/300;background:var(--logo) center/contain no-repeat}.tabs button.on{background:#ffe600;border-color:#fff;color:#064e1b;box-shadow:0 3px 0 rgba(0,0,0,.3)}.comp{background:var(--card);border:2px solid #0b7d3e;border-radius:12px;padding:8px 14px;margin:0 0 8px;font-size:.92rem}.comp ul{margin:4px 0 0;padding-left:20px}
+#adm h3{margin:18px 0 6px;color:var(--ac)}#adm input[type=file]{margin:6px 0}#adm select{width:auto;min-width:90px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+<script>
+/* ===== FIREBASE: pega aquí la configuración de tu app web (Consola Firebase > Configuración del proyecto). =====
+   Si dejas apiKey vacío, el laboratorio funciona en MODO LOCAL (datos solo en el navegador). */
+window.FIREBASE_CONFIG={
+  apiKey: "AIzaSyAu6o8lxsgnwkqi8R0vSLJG44_tDIVtvVM",
+  authDomain: "laboratorio-ciencias-1fd90.firebaseapp.com",
+  projectId: "laboratorio-ciencias-1fd90",
+  storageBucket: "laboratorio-ciencias-1fd90.firebasestorage.app",
+  messagingSenderId: "798758796086",
+  appId: "1:798758796086:web:a63d431a80a6028b3f1197"
+};
+</script>
+<script type="module">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+import {getFirestore,doc,getDoc,setDoc,collection,getDocs,onSnapshot,writeBatch} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+const c=window.FIREBASE_CONFIG;
+if(c&&c.apiKey){try{
+ const app=initializeApp(c),au=getAuth(app),db=getFirestore(app),ev=collection(db,'evaluaciones');
+ window.FBX={
+  login:(e,p)=>signInWithEmailAndPassword(au,e,p),
+  logout:()=>signOut(au).then(()=>signInAnonymously(au)),
+  cfg:async()=>{const s=await getDoc(doc(db,'config','general'));return s.exists()?s.data():null},
+  saveCfg:d=>setDoc(doc(db,'config','general'),d,{merge:true}),
+  get:async id=>{const s=await getDoc(doc(db,'evaluaciones',id));return s.exists()?s.data():null},
+  put:(id,d)=>setDoc(doc(db,'evaluaciones',id),d),
+  watch:(cb,er)=>onSnapshot(ev,s=>cb(s.docs.map(x=>x.data())),er),
+  clear:async()=>{const s=await getDocs(ev);for(let i=0;i<s.docs.length;i+=400){const b=writeBatch(db);s.docs.slice(i,i+400).forEach(x=>b.delete(x.ref));await b.commit()}}
+ };
+ try{await signInAnonymously(au)}catch(e){window.FBERR=e.code}
+}catch(e){console.error(e)}}
+window.dispatchEvent(new Event('fbready'));
+</script></head><body>
+<div class="w">
+<div class="hd"><div class="logo" role="img" aria-label="Insignia de la I.E.P. José Santos Figueroa Santillana"></div><h1>LABORATORIO VIRTUAL DE CIENCIAS JOSAFI - 2026</h1></div>
+<div class="c" id="idb"></div>
+<p class="mu" id="pg"></p>
+<div class="tabs" id="tabs"></div>
+<div class="comp"><b>🎯 Competencias que se trabajan</b><ul><li><b>Indaga mediante métodos científicos</b> para construir conocimientos.</li><li><b>Explica el mundo físico</b> basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo.</li></ul></div>
+<div class="c" id="adm" hidden></div>
+<nav id="nav" aria-label="Experimentos"></nav>
+<div class="sp" id="sp" aria-label="Fases"></div>
+<main>
+<div class="c"><svg id="sv" viewBox="0 0 400 260" role="img" aria-label="Simulación del experimento"></svg></div>
+<div class="c" id="pn"></div>
+</main></div>
+<script>
+const $=s=>document.querySelector(s);
+const sT=T=>T<=0?0:T<100?1:2, SN=['Sólido (hielo)','Líquido','Gas (vapor)'];
+const BG='<rect width="400" height="260" rx="10" fill="#f1fceb"/>';
+const E=[
+{n:'Ciclo del agua',i:'💧',
+ ex:'El agua puede ser hielo, líquido o vapor. Al cambiar la temperatura, las partículas se mueven más rápido o más lento y el agua cambia de estado: se funde a 0 °C y hierve a 100 °C.',
+ q:'¿Qué le pasa al movimiento de las partículas cuando calentamos el agua?',
+ pr:'Procedimiento: mueve el control de −20 °C a 120 °C, observa las partículas y registra al menos 4 mediciones, incluidas 0 °C y 100 °C.',
+ c:['Temperatura','Estado'],
+ k:[{id:'T',l:'Temperatura',a:-20,b:120,s:1,v:25,u:'°C'}],
+ d:(v,t)=>{const T=v.T,s=sT(T),col=['#bfe6ff','#3b9be0','#c5ccd3'][s],sp=2+Math.max(T+20,0)/25;let p='';
+  for(let i=0;i<36;i++){let x,y;
+   if(s==0){x=95+(i%6)*34+Math.sin(t*4+i)*1.5;y=190-((i/6)|0)*20+Math.cos(t*4+i*2)*1.5}
+   else if(s==1){x=80+(i*37)%240+Math.sin(t*sp+i)*9;y=130+(i*23)%55+Math.cos(t*sp+i*1.7)*9}
+   else{x=200+Math.sin(t*1.3+i*2.1)*130;y=110+Math.cos(t*1.7+i*1.3)*80}
+   p+=`<circle cx="${x}" cy="${y}" r="7" fill="${col}" stroke="#2a6f9e"/>`}
+  const H=(T+20)/140*190;
+  return `<rect x="50" y="20" width="300" height="190" rx="8" fill="#f7fbff" stroke="#6b8196" stroke-width="3"/>${p}<rect x="366" y="20" width="14" height="190" rx="7" fill="#d5dde3"/><rect x="368" y="${210-H}" width="10" height="${H}" fill="#d9362b"/><text x="200" y="240" text-anchor="middle" font-size="16" fill="#14262b">${SN[s]}, ${T} °C</text>`},
+ r:v=>`Estado: <b>${SN[sT(v.T)]}</b>. Las partículas se mueven ${['muy poco, casi fijas','con libertad moderada','muy rápido y lejos unas de otras'][sT(v.T)]}.`,
+ w:v=>[v.T+' °C',SN[sT(v.T)]],
+ co:'A 0 °C el hielo se funde y a 100 °C el agua hierve. Al subir la temperatura, las partículas ganan energía y se separan: sólido, líquido, gas.',
+ z:[['¿A qué temperatura hierve el agua al nivel del mar?',['0 °C','50 °C','100 °C'],2,'Hierve a 100 °C al nivel del mar.'],
+    ['El paso de líquido a gas se llama…',['fusión','evaporación','solidificación'],1,'Evaporación (o ebullición si es rápida y con burbujas).'],
+    ['Si las partículas se mueven más rápido, la temperatura…',['aumenta','disminuye','no cambia'],0,'La temperatura mide la energía de movimiento de las partículas.']]},
+{n:'Circuitos eléctricos',i:'⚡',
+ ex:'En un circuito, el voltaje de la pila empuja a las cargas, la resistencia se opone a su paso y la corriente es la cantidad de carga que circula por segundo. Se relacionan así: I = V ÷ R (ley de Ohm).',
+ q:'Si usas una pila más fuerte, ¿el foco brillará más o menos?',
+ pr:'Procedimiento: fija R en 6 Ω y cambia V. Luego fija V y cambia R. Registra 4 mediciones y compara la corriente y el brillo.',
+ c:['Voltaje (V)','Resistencia (Ω)','Corriente (A)'],
+ k:[{id:'V',l:'Voltaje',a:1,b:12,s:1,v:6,u:'V'},{id:'R',l:'Resistencia',a:1,b:20,s:1,v:6,u:'Ω'}],
+ d:(v,t)=>{const I=v.V/v.R,b=Math.min(1,I/2),sp=Math.min(I,4)*.05;let e='';
+  for(let i=0;i<14;i++){const f=((i/14+t*sp)%1)*760;let x,y;
+   if(f<240){x=80+f;y=60}else if(f<380){x=320;y=60+f-240}else if(f<620){x=320-(f-380);y=200}else{x=80;y=200-(f-620)}
+   e+=`<circle cx="${x}" cy="${y}" r="4" fill="#f5b700" stroke="#8a6500"/>`}
+  return `<rect x="80" y="60" width="240" height="140" fill="none" stroke="#555" stroke-width="3"/><rect x="68" y="105" width="24" height="50" fill="#ffe0b2" stroke="#555" stroke-width="2"/><text x="60" y="135" text-anchor="end" font-size="14" fill="#14262b">${v.V} V</text><rect x="170" y="190" width="60" height="20" fill="#fff" stroke="#555" stroke-width="2"/><text x="200" y="226" text-anchor="middle" font-size="13" fill="#14262b">R = ${v.R} Ω</text><circle cx="200" cy="60" r="${20+b*22}" fill="rgba(255,214,0,${b*.35})"/><circle cx="200" cy="60" r="18" fill="rgba(255,214,0,${.1+.9*b})" stroke="#555" stroke-width="2"/>${e}<circle cx="320" cy="130" r="18" fill="#fff" stroke="#555" stroke-width="2"/><text x="320" y="136" text-anchor="middle" font-size="16" fill="#14262b">A</text><text x="200" y="248" text-anchor="middle" font-size="16" fill="#14262b">I = ${I.toFixed(2)} A</text>`},
+ r:v=>`I = V ÷ R = ${v.V} ÷ ${v.R} = <b>${(v.V/v.R).toFixed(2)} A</b>`,
+ w:v=>[v.V,v.R,(v.V/v.R).toFixed(2)],
+ co:'La corriente crece con el voltaje y disminuye con la resistencia: I = V ÷ R. Más corriente significa un foco más brillante y electrones que circulan más rápido.',
+ z:[['Si aumentas el voltaje y la resistencia no cambia, la corriente…',['aumenta','disminuye','queda igual'],0,'Por la ley de Ohm, I = V ÷ R.'],
+    ['Con 12 V y 4 Ω, ¿cuánta corriente circula?',['3 A','48 A','8 A'],0,'I = 12 ÷ 4 = 3 A.'],
+    ['Al aumentar la resistencia, el foco brilla…',['más','menos','igual'],1,'Más resistencia, menos corriente, menos brillo.']]},
+{n:'Densidad',i:'🧊',
+ ex:'La densidad indica cuánta masa hay en cada unidad de volumen: ρ = m ÷ V. El agua tiene 1 g/cm³. Un objeto flota si es menos denso que el agua y se hunde si es más denso.',
+ q:'¿Un objeto grande siempre se hunde más que uno pequeño?',
+ pr:'Procedimiento: cambia la masa con el volumen fijo, y luego el volumen con la masa fija. Busca la densidad en la que el bloque deja de hundirse. Registra 4 mediciones.',
+ c:['Masa (g)','Volumen (cm³)','Densidad (g/cm³)','Resultado'],
+ k:[{id:'m',l:'Masa',a:10,b:200,s:5,v:60,u:'g'},{id:'V',l:'Volumen',a:10,b:200,s:5,v:100,u:'cm³'}],
+ d:(v,t)=>{const r=v.m/v.V,s=Math.cbrt(v.V)*9;
+  const y=r<=1?90-s*(1-r)+(r<1?Math.sin(t*2)*2:0):230-s;
+  return `<rect x="120" y="70" width="240" height="160" fill="none" stroke="#6b8196" stroke-width="3"/><rect x="121" y="90" width="238" height="139" fill="rgba(59,155,224,.4)"/><rect x="${240-s/2}" y="${y}" width="${s}" height="${s}" rx="3" fill="${r<1?'#e0a050':'#7a7f88'}" stroke="#333" stroke-width="2"/><text x="8" y="100" font-size="12" fill="#14262b">m = ${v.m} g</text><text x="8" y="120" font-size="12" fill="#14262b">V = ${v.V} cm³</text><text x="8" y="140" font-size="12" fill="#14262b">ρ = ${r.toFixed(2)} g/cm³</text><text x="240" y="250" text-anchor="middle" font-size="13" fill="#14262b">Agua (1 g/cm³)</text>`},
+ r:v=>{const r=v.m/v.V;return `ρ = m ÷ V = ${v.m} ÷ ${v.V} = <b>${r.toFixed(2)} g/cm³</b>. El bloque <b>${r<1?'flota':r>1?'se hunde':'queda sumergido en equilibrio'}</b>.`},
+ w:v=>{const r=v.m/v.V;return [v.m,v.V,r.toFixed(2),r<1?'Flota':r>1?'Se hunde':'Equilibrio']},
+ co:'La densidad depende de la relación entre masa y volumen, no del tamaño. Si ρ es menor que 1 g/cm³ el bloque flota en agua; si es mayor, se hunde.',
+ z:[['La densidad se calcula como…',['masa ÷ volumen','volumen ÷ masa','masa × volumen'],0,'ρ = m ÷ V.'],
+    ['Un objeto con densidad menor que 1 g/cm³, puesto en agua…',['se hunde','flota','se disuelve'],1,'Es menos denso que el agua.'],
+    ['Si duplicas la masa y mantienes el volumen, la densidad…',['se duplica','se reduce a la mitad','no cambia'],0,'ρ es proporcional a la masa.']]},
+{n:'Mezclas',i:'🧂',
+ ex:'Una solución es una mezcla uniforme: el soluto (sal) se disuelve en el disolvente (agua). La concentración indica cuánto soluto hay por cada 100 mL. Cada disolvente admite un máximo: en agua, unos 36 g de sal por 100 mL.',
+ q:'¿Qué pasará si sigues agregando sal cuando el agua ya no puede disolver más?',
+ pr:'Procedimiento: con 100 mL de agua, agrega sal poco a poco hasta ver sólido en el fondo. Luego cambia el volumen de agua. Registra 4 mediciones.',
+ c:['Sal (g)','Agua (mL)','Concentración (g/100 mL)','Estado'],
+ k:[{id:'g',l:'Sal agregada',a:0,b:60,s:1,v:10,u:'g'},{id:'W',l:'Volumen de agua',a:50,b:200,s:10,v:100,u:'mL'}],
+ d:(v,t)=>{const mx=.36*v.W,dis=Math.min(v.g,mx),ex=v.g-dis,cn=dis/v.W*100,h=v.W*.7,top=220-h;let p='';
+  for(let i=0;i<Math.round(dis*.6);i++)p+=`<circle cx="${120+(i*47)%160+Math.sin(t*1.5+i)*4}" cy="${top+10+(i*31)%(h-20)+Math.cos(t*1.5+i*2)*4}" r="2.5" fill="#fff" stroke="#2a6f9e"/>`;
+  for(let i=0;i<Math.min(60,Math.round(ex*1.2));i++)p+=`<rect x="${118+(i%20)*8}" y="${213-((i/20)|0)*6}" width="6" height="5" fill="#fff" stroke="#999"/>`;
+  return `<rect x="110" y="${top}" width="180" height="${h}" fill="rgba(59,155,224,${.2+cn/36*.35})"/>${p}<path d="M110 60V220H290V60" fill="none" stroke="#6b8196" stroke-width="3"/><text x="200" y="36" text-anchor="middle" font-size="15" fill="#14262b">${ex>.01?'Saturada: sobra sal sin disolver':'No saturada'}</text><text x="200" y="248" text-anchor="middle" font-size="14" fill="#14262b">${cn.toFixed(1)} g de sal por 100 mL</text>`},
+ r:v=>{const d=Math.min(v.g,.36*v.W),e=v.g-d;return `Concentración = soluto ÷ agua × 100 = <b>${(d/v.W*100).toFixed(1)} g/100 mL</b>. ${e>.01?'Saturada: '+e.toFixed(1)+' g quedan sin disolver.':'No saturada: todo se disuelve.'}`},
+ w:v=>{const d=Math.min(v.g,.36*v.W);return [v.g,v.W,(d/v.W*100).toFixed(1),v.g-d>.01?'Saturada':'No saturada']},
+ co:'La concentración sube al agregar soluto o al reducir el agua. Al llegar al límite de solubilidad (36 g/100 mL) la solución se satura y el exceso se deposita en el fondo.',
+ z:[['En una solución de agua con sal, ¿cuál es el soluto?',['el agua','la sal','el vaso'],1,'El soluto es lo que se disuelve: la sal.'],
+    ['Disuelves 18 g de sal en 100 mL. Si disuelves los mismos 18 g en 50 mL, la concentración…',['se reduce a la mitad','se duplica','no cambia'],1,'Misma sal en la mitad del agua: el doble de concentración.'],
+    ['Una solución saturada es la que…',['no tiene soluto','no admite más soluto disuelto','tiene muy poca sal'],1,'Ya llegó al máximo y el exceso queda sin disolver.']]},
+{n:'Fotosíntesis',i:'🌿',
+ ex:'Las plantas usan luz, agua y dióxido de carbono para fabricar su alimento (glucosa) y liberan oxígeno. En una planta acuática, las burbujas de oxígeno muestran cuán rápida es la fotosíntesis.',
+ q:'¿Qué ocurrirá con las burbujas si apagamos la lámpara?',
+ pr:'Procedimiento: parte con la luz en 0 % y auméntala de 20 en 20. Registra las burbujas por minuto en cada paso y busca desde dónde el aumento se frena.',
+ c:['Luz (%)','Burbujas de O₂ por minuto'],
+ k:[{id:'L',l:'Intensidad de luz',a:0,b:100,s:5,v:50,u:'%'}],
+ d:(v,t)=>{const L=v.L,rt=Math.round(28*(1-Math.exp(-L/35)));let b='',ry='';
+  for(let i=0;i<Math.min(12,Math.round(rt/2.5));i++)b+=`<circle cx="${205+(i*17)%45+Math.sin(t*3+i)*3}" cy="${200-(t*35+i*47)%140}" r="${3+i%3}" fill="#fff" stroke="#2a6f9e"/>`;
+  for(let k=0;k<5;k++)ry+=`<line x1="65" y1="${98+k*6}" x2="130" y2="${70+k*30}" stroke="#f5b700" stroke-width="2" stroke-dasharray="4 4" opacity="${L/100}"/>`;
+  return `<circle cx="45" cy="110" r="${14+L/10}" fill="rgba(255,214,0,${.2+.8*L/100})" stroke="#8a6500" stroke-width="2"/>${ry}<rect x="130" y="50" width="200" height="170" fill="rgba(59,155,224,.25)" stroke="#6b8196" stroke-width="3"/><path d="M230 220C225 170 235 130 228 90M215 220C205 180 200 150 195 130M245 220C255 180 262 150 268 125" fill="none" stroke="#2e8b3a" stroke-width="5"/><ellipse cx="215" cy="105" rx="16" ry="7" fill="#3fa84a"/><ellipse cx="250" cy="130" rx="16" ry="7" fill="#3fa84a"/><ellipse cx="190" cy="135" rx="14" ry="6" fill="#3fa84a"/><ellipse cx="268" cy="118" rx="14" ry="6" fill="#3fa84a"/>${b}<text x="45" y="160" text-anchor="middle" font-size="13" fill="#14262b">Luz ${L} %</text><text x="230" y="244" text-anchor="middle" font-size="15" fill="#14262b">Oxígeno: ${rt} burbujas/min</text>`},
+ r:v=>{const rt=Math.round(28*(1-Math.exp(-v.L/35)));return `Burbujas de O₂: <b>${rt} por minuto</b>. ${v.L==0?'Sin luz casi no hay fotosíntesis.':v.L>=70?'La rapidez ya casi no aumenta: la planta se satura.':'A más luz, más fotosíntesis.'}`},
+ w:v=>[v.L+' %',Math.round(28*(1-Math.exp(-v.L/35)))],
+ co:'La fotosíntesis aumenta con la luz, pero no de forma indefinida: a intensidades altas otros factores (CO₂, agua, enzimas) la limitan.',
+ z:[['¿Qué gas libera la planta durante la fotosíntesis?',['oxígeno','dióxido de carbono','nitrógeno'],0,'Libera oxígeno.'],
+    ['Sin luz, la fotosíntesis…',['se acelera','se detiene casi por completo','no cambia'],1,'La luz es la fuente de energía del proceso.'],
+    ['Además de luz y agua, la planta necesita…',['dióxido de carbono','sal','hierro'],0,'Con CO₂ y agua produce glucosa y oxígeno.']]},
+{n:'Fuerza y movimiento',i:'🛒',
+ ex:'Una fuerza puede cambiar la velocidad de un objeto. La aceleración es cuánto cambia la velocidad en cada segundo: a = F ÷ m. Con más fuerza se acelera más; con más masa, menos.',
+ q:'¿Qué carrito acelera más: uno vacío o uno cargado, empujados con la misma fuerza?',
+ pr:'Procedimiento: observa el carrito durante 4 s. Cambia la fuerza con la masa fija, y luego la masa con la fuerza fija. Registra 4 mediciones.',
+ c:['Fuerza (N)','Masa (kg)','a (m/s²)','v a los 3 s (m/s)'],
+ k:[{id:'F',l:'Fuerza',a:1,b:50,s:1,v:20,u:'N'},{id:'m',l:'Masa',a:1,b:20,s:1,v:5,u:'kg'}],
+ d:(v,t)=>{const a=v.F/v.m,tt=Math.min(t%6,4),px=Math.min(.5*a*tt*tt*5,240),x=80+px,w=40+v.m*1.5,len=Math.min(60,v.F*1.2);
+  return `<line x1="20" y1="182" x2="380" y2="182" stroke="#555" stroke-width="3"/><rect x="${x}" y="140" width="${w}" height="30" rx="4" fill="#e07a3f" stroke="#333" stroke-width="2"/><circle cx="${x+10}" cy="175" r="7" fill="#333"/><circle cx="${x+w-10}" cy="175" r="7" fill="#333"/><text x="${x+w/2}" y="160" text-anchor="middle" font-size="12" fill="#fff">${v.m} kg</text><line x1="${x-len-2}" y1="155" x2="${x-10}" y2="155" stroke="#c0392b" stroke-width="4"/><polygon points="${x-2},155 ${x-12},149 ${x-12},161" fill="#c0392b"/><text x="200" y="60" text-anchor="middle" font-size="13" fill="#14262b">a = ${a.toFixed(2)} m/s²  |  v = ${(a*tt).toFixed(1)} m/s  |  t = ${tt.toFixed(1)} s</text><text x="200" y="230" text-anchor="middle" font-size="13" fill="#14262b">Fuerza aplicada: ${v.F} N</text>`},
+ r:v=>`a = F ÷ m = ${v.F} ÷ ${v.m} = <b>${(v.F/v.m).toFixed(2)} m/s²</b>. Tras 3 s: v = a·t = <b>${(v.F/v.m*3).toFixed(1)} m/s</b>`,
+ w:v=>[v.F,v.m,(v.F/v.m).toFixed(2),(v.F/v.m*3).toFixed(1)],
+ co:'La aceleración es directamente proporcional a la fuerza e inversamente proporcional a la masa. Partiendo del reposo, la velocidad crece con el tiempo: v = a·t.',
+ z:[['Con la misma masa, si duplicas la fuerza, la aceleración…',['se duplica','se reduce a la mitad','no cambia'],0,'a = F ÷ m: es proporcional a F.'],
+    ['Una fuerza de 20 N sobre 4 kg produce una aceleración de…',['5 m/s²','80 m/s²','0,2 m/s²'],0,'a = 20 ÷ 4 = 5 m/s².'],
+    ['Un carrito acelera a 2 m/s² desde el reposo. Su velocidad a los 5 s es…',['10 m/s','2,5 m/s','7 m/s'],0,'v = a·t = 2 × 5 = 10 m/s.']]}
+];
+const EX=[
+[['¿A qué temperatura se funde el hielo?',['0 °C','10 °C','100 °C'],0,'El hielo se funde a 0 °C.'],
+ ['Las partículas del hielo…',['se mueven muy rápido','vibran en posiciones casi fijas','están muy separadas'],1,'En el estado sólido casi no se desplazan.'],
+ ['El paso de gas a líquido se llama…',['fusión','condensación','sublimación'],1,'Condensación: el vapor se enfría y forma gotas.'],
+ ['¿En qué estado se mueven más rápido las partículas?',['sólido','líquido','gas'],2,'En el gas tienen más energía y están muy separadas.'],
+ ['En el ciclo del agua, el Sol provoca principalmente…',['la condensación','la solidificación','la evaporación'],2,'El calor del Sol evapora el agua de ríos, lagos y mares.']],
+[['La unidad de la resistencia es…',['voltio','ohmio','amperio'],1,'La resistencia se mide en ohmios (Ω).'],
+ ['La corriente eléctrica se mide en…',['amperios','ohmios','voltios'],0,'La corriente se mide en amperios (A).'],
+ ['Con 10 V y 5 Ω, la corriente es…',['50 A','2 A','0,5 A'],1,'I = 10 ÷ 5 = 2 A.'],
+ ['Si la resistencia se duplica con el mismo voltaje, la corriente…',['se duplica','no cambia','se reduce a la mitad'],2,'I = V ÷ R: al duplicar R, I baja a la mitad.'],
+ ['¿Qué suministra el voltaje en el circuito?',['el foco','la pila','el cable'],1,'La pila empuja a las cargas por el circuito.']],
+[['Un bloque de 100 g que ocupa 50 cm³ tiene una densidad de…',['2 g/cm³','0,5 g/cm³','5 g/cm³'],0,'ρ = 100 ÷ 50 = 2 g/cm³.'],
+ ['Un bloque con densidad de 2 g/cm³, puesto en agua…',['flota','se hunde','queda en la superficie'],1,'Es más denso que el agua (1 g/cm³).'],
+ ['Si aumentas el volumen y mantienes la masa, la densidad…',['aumenta','no cambia','disminuye'],2,'ρ = m ÷ V: con más volumen, la densidad baja.'],
+ ['¿Cuál es la densidad del agua?',['1 g/cm³','10 g/cm³','0,1 g/cm³'],0,'El agua tiene 1 g/cm³.'],
+ ['Un barco de acero flota porque…',['el acero es menos denso que el agua','su forma hueca hace que su densidad promedio sea menor que la del agua','pesa muy poco'],1,'Contiene mucho aire y su densidad media es menor que 1 g/cm³.']],
+[['En agua con sal, ¿cuál es el disolvente?',['la sal','el aire','el agua'],2,'El disolvente es el que disuelve: el agua.'],
+ ['100 mL de agua ya tienen 36 g de sal disueltos. Si agregas 10 g más…',['10 g quedan sin disolver','se disuelven todos','el agua se evapora'],0,'La solución está saturada: el exceso se deposita en el fondo.'],
+ ['Para aumentar la concentración puedes…',['agregar más agua','quitar el vaso','agregar más soluto'],2,'Más soluto en el mismo volumen aumenta la concentración.'],
+ ['Una solución es una mezcla…',['homogénea','con partes visibles distintas','de dos sólidos únicamente'],0,'Homogénea: se ve igual en todas sus partes.'],
+ ['Si agregas agua a una solución, su concentración…',['aumenta','no cambia','disminuye'],2,'El soluto se reparte en más disolvente: se diluye.']],
+[['¿En qué parte de la célula vegetal ocurre la fotosíntesis?',['en los cloroplastos','en el núcleo','en la pared celular'],0,'Los cloroplastos contienen clorofila.'],
+ ['El pigmento verde que capta la luz se llama…',['hemoglobina','clorofila','melanina'],1,'La clorofila absorbe la luz.'],
+ ['En el experimento, ¿qué indican las burbujas?',['calor','agua que hierve','oxígeno liberado'],2,'Son burbujas de oxígeno producido por la fotosíntesis.'],
+ ['Además de oxígeno, la planta produce…',['sal','proteína animal','glucosa'],2,'Produce glucosa, un azúcar que le sirve de alimento.'],
+ ['Con la luz al máximo, si la fotosíntesis ya no aumenta, es porque…',['otros factores, como el CO₂, la limitan','la planta murió','la lámpara se apagó'],0,'Otros factores limitan el proceso: es la saturación.']],
+[['La unidad de fuerza es…',['kilogramo','newton','metro'],1,'La fuerza se mide en newtons (N).'],
+ ['Una fuerza de 30 N sobre 6 kg produce una aceleración de…',['180 m/s²','5 m/s²','0,2 m/s²'],1,'a = 30 ÷ 6 = 5 m/s².'],
+ ['Si aumentas la masa y la fuerza no cambia, la aceleración…',['aumenta','no cambia','disminuye'],2,'a = F ÷ m: con más masa, menos aceleración.'],
+ ['Un carrito acelera a 3 m/s² desde el reposo. Su velocidad a los 4 s es…',['12 m/s','7 m/s','0,75 m/s'],0,'v = 3 × 4 = 12 m/s.'],
+ ['La aceleración es el cambio de…',['la masa','la fuerza','la velocidad en cada segundo'],2,'Indica cuánto cambia la velocidad por segundo.']]
+];
+E.forEach((e,i)=>e.z.push(...EX[i].slice(0,2)));
+const ld=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}},sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const nz=t=>(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/\s+/g,' ').trim();
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a},qs=e=>{const i=E.indexOf(e);return (ORD[i]||(ORD[i]=shuf(e.z.map((_,k)=>k)).slice(0,CFG.n))).map(k=>e.z[k])},key=x=>x.g+x.s+'_'+nz(x.a+' '+x.no).replace(/ /g,'_').replace(/[^A-Z0-9_]/g,''),bst=a=>a.reduce((m,y)=>!m||y.s/y.n>m.s/m.n?y:m,null);
+let RO=ld('lab-ro',[]),P=ld('lab-pr',{}),CFG=ld('lab-cfg',{n:5}),PIN=ld('lab-pin','josafi2026'),S=null,PF=null,M='lab',ADM=false,CAND=[],ORD=[],UN=null;
+let ci=0,sp=0,V=E.map(e=>Object.fromEntries(e.k.map(c=>[c.id,c.v]))),R=E.map(()=>[]),A=E.map(()=>[]),sc={};
+const msg=t=>{$('#im').innerHTML=t},am=t=>{$('#am').innerHTML=t};
+P=Object.fromEntries(Object.values(P).map(p=>[key(p),p]));const cnt=()=>Object.values(P).reduce((n,p)=>n+Object.values(p.ex).reduce((k,a)=>k+a.length,0),0);
+function idui(){const b=$('#idb');
+ if(S){b.innerHTML=`<b>👤 ${S.a}, ${S.no}</b> · Grado ${S.g} · Sección ${S.s} <button onclick="salir()">Cambiar estudiante</button>`;return}
+ b.innerHTML=`<label for="fq"><b>🔍 Busca tu nombre</b></label><input type="text" id="fq" autocomplete="off" placeholder="Escribe tu nombre, apellido, grado o sección (ej.: Quispe 5B)" oninput="buscar()"><div id="im"></div>`;buscar()}
+function buscar(){const q=$('#fq');if(!q)return;
+ if(!RO.length)return msg('El docente aún no cargó la lista de estudiantes.');
+ const tk=nz(q.value).replace(/[°º]/g,'').split(' ').filter(t=>t&&t!='GRADO'&&t!='SECCION'),ss=new Set(RO.map(x=>x.s));
+ if(!tk.length)return msg('Escribe tu nombre, apellido, grado o sección: los resultados aparecen solos.');
+ const f=(x,t)=>/^[1-6][A-Z]$/.test(t)?x.g+x.s==t:/^[1-6]$/.test(t)?x.g==t:(t.length==1&&ss.has(t))?x.s==t:nz(x.a+' '+x.no).includes(t);
+ const m=RO.filter(x=>tk.every(t=>f(x,t)));
+ if(!m.length)return msg('Sin coincidencias. Revisa la escritura o prueba con menos letras.');
+ msg(m.length+' coincidencia(s). Toca tu nombre:<div class="rs">'+m.slice(0,40).map(x=>`<button onclick="login(${RO.indexOf(x)})">${x.a}, ${x.no} · ${x.g}${x.s}</button>`).join('')+'</div>'+(m.length>40?'<p class="mu">Hay más resultados: escribe más letras para acotar.</p>':''))}
+async function login(i){S=RO[i];A=E.map(()=>[]);R=E.map(()=>[]);ORD=[];sc={};
+ if(window.FBX){try{await Promise.all(E.map(async(e,k)=>{const d=await FBX.get(key(S)+'__'+k);if(d){const p=P[key(S)]||(P[key(S)]={a:S.a,no:S.no,g:S.g,s:S.s,ex:{}});p.ex[k]=[{f:d.f,s:d.pts,n:d.n,m:d.m,d:d.d}]}}))}catch(x){alert('No se pudo consultar tu avance. Revisa tu conexión.')}}
+ const p=P[key(S)];if(p)E.forEach((e,k)=>{const b=bst(p.ex[k]||[]);if(b)sc[k]=b});idui();ui()}
+function salir(){S=null;sc={};ORD=[];A=E.map(()=>[]);R=E.map(()=>[]);idui();ui()}
+const fsL=()=>document.fullscreenElement?'🗗 Salir de pantalla completa':'⛶ Pantalla completa';
+function pant(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}
+document.addEventListener('fullscreenchange',()=>{const b=$('#fsb');if(b)b.textContent=fsL()});
+function tabs(){$('#tabs').innerHTML=`<button class="${M=='lab'?'on':''}" onclick="mode('lab')">🔬 Laboratorio</button><button class="${M=='adm'?'on':''}" onclick="mode('adm')">🛠️ Administrador</button>${document.fullscreenEnabled?`<button class="fs" id="fsb" onclick="pant()">${fsL()}</button>`:''}`}
+function mode(m){M=m;tabs();document.querySelectorAll('nav,.sp,main').forEach(x=>x.hidden=m=='adm');$('#adm').hidden=m!='adm';m=='adm'?aui():ui()}
+function ui(){
+ const e=E[ci],v=V[ci],n=Object.keys(sc).length;
+ $('#pg').textContent=S?`Completaste ${n} de ${E.length} evaluaciones. Elige un experimento y avanza por sus cuatro fases.`:'Identifícate para guardar tus evaluaciones. Mientras tanto puedes explorar los experimentos.';
+ $('#nav').innerHTML=E.map((x,i)=>`<button class="${i==ci?'on':''}" onclick="go(${i})">${x.i} ${x.n}${sc[i]?` <span class="b">${sc[i].s}/${sc[i].n}</span>`:''}</button>`).join('');
+ $('#sp').innerHTML=['1 Exploración','2 Experimentación','3 Observación','4 Evaluación'].map((t,i)=>`<button class="${i==sp?'on':''}" onclick="st(${i})">${t}</button>`).join('');
+ let h='';
+ if(sp==0)h=`<h2>${e.i} ${e.n}</h2><p>${e.ex}</p><p class="q">${e.q}</p><button class="go" onclick="st(1)">Comenzar a experimentar</button>`;
+ else if(sp==1)h=`<h2>Experimentación</h2><p class="mu">${e.pr}</p>`+e.k.map(c=>`<label>${c.l}: <b id="o_${c.id}">${v[c.id]} ${c.u}</b><input type="range" min="${c.a}" max="${c.b}" step="${c.s}" value="${v[c.id]}" oninput="sl('${c.id}',this.value)"></label>`).join('')+`<div class="ro" id="ro">${e.r(v)}</div><button class="go" onclick="rec()">Registrar medición</button> <span class="mu" id="nr">${R[ci].length} registradas</span><p><button onclick="st(2)">Ir a la observación</button></p>`;
+ else if(sp==2)h=`<h2>Observación</h2><div class="ro">${e.r(v)}</div>`+(R[ci].length?`<div class="tw"><table><tr>${e.c.map(c=>`<th>${c}</th>`).join('')}</tr>${R[ci].map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</table></div>`:'<p class="mu">Aún no hay mediciones. Vuelve a Experimentación y pulsa «Registrar medición».</p>')+`<p><b>Conclusión:</b> ${e.co}</p><button class="go" onclick="st(3)">Ir a la evaluación</button>`;
+ else if(!S)h='<h2>Evaluación</h2><p>Para responder y guardar tu evaluación, primero identifícate arriba con tus apellidos, nombres, grado y sección.</p>';
+ else{const z=qs(e),at=(P[key(S)]||{ex:{}}).ex[ci],a=A[ci],n=a.filter(x=>x!=null).length;
+  if(at&&at.length){const t=at[at.length-1];h=`<h2>Evaluación</h2><p class="sc">Evaluación enviada. Puntaje: ${t.s} de ${t.n}. ${t.s==t.n?'¡Excelente trabajo!':'Sigue practicando.'}</p>`+t.d.map((d,i)=>`<div class="qz"><b>${i+1}. ${d.q}</b><p class="fb">${d.ok?'✅ Correcto.':'❌ Incorrecto.'} Tu respuesta: ${d.r}.${d.ok?'':' Respuesta correcta: '+d.c+'.'} ${d.e||''}</p></div>`).join('')}
+  else h=`<h2>Evaluación</h2><p class="mu">Puedes cambiar tus respuestas las veces que quieras. Cuando termines, pulsa «Enviar evaluación»: después ya no se podrá modificar.</p>`+z.map((q,i)=>`<div class="qz"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="op ${a[i]==j?'sel':''}" onclick="pick(${i},${j})">${o}</button>`).join('')}</div>`).join('')+`<p class="mu">${n} de ${z.length} respondidas</p><button class="go" onclick="enviar()" ${n<z.length?'disabled':''}>📤 Enviar evaluación</button>`}
+ $('#pn').innerHTML=h;
+}
+function go(i){ci=i;sp=0;ui()}
+function st(i){sp=i;ui()}
+function sl(id,x){V[ci][id]=+x;$('#o_'+id).textContent=x+' '+E[ci].k.find(c=>c.id==id).u;$('#ro').innerHTML=E[ci].r(V[ci])}
+function rec(){const r=R[ci];r.push(E[ci].w(V[ci]));if(r.length>12)r.shift();$('#nr').textContent=r.length+' registradas'}
+function pick(i,j){A[ci][i]=j;ui()}
+async function enviar(){if(enviar.b)return;enviar.b=1;try{const a=A[ci],q=qs(E[ci]);if(a.filter(x=>x!=null).length<q.length)return;
+ if(!confirm('¿Enviar la evaluación? Después ya no podrás cambiar tus respuestas.'))return;
+ const d=q.map((z,k)=>({q:z[0],r:z[1][a[k]],c:z[1][z[2]],ok:a[k]==z[2],e:z[3]})),s=d.filter(x=>x.ok).length,f=new Date().toLocaleString('es-PE'),m=R[ci].length;
+ if(window.FBX){try{await FBX.put(key(S)+'__'+ci,{sid:key(S),a:S.a,no:S.no,g:S.g,sec:S.s,exp:ci,expName:E[ci].n,f,pts:s,n:q.length,m,d})}catch(x){return alert('No se pudo enviar. Si ya enviaste esta evaluación desde otro equipo no se puede repetir; si no, revisa tu conexión e inténtalo de nuevo.')}}
+ const p=P[key(S)]||(P[key(S)]={a:S.a,no:S.no,g:S.g,s:S.s,ex:{}});
+ (p.ex[ci]=p.ex[ci]||[]).push({f,s,n:q.length,m,d});if(!window.FBX)sv('lab-pr',P);sc[ci]=bst(p.ex[ci]);ui()}finally{enviar.b=0}}
+/* ---------- Administrador ---------- */
+function aui(){const a=$('#adm');
+ if(!ADM){a.innerHTML=window.FBX?`<h2>Administrador</h2><p class="mu">Ingresa con el correo y la clave del docente (Firebase).</p><input type="text" id="em" placeholder="correo" style="max-width:260px"> <input type="password" id="pw" placeholder="clave" style="max-width:200px"> <button class="go" onclick="unlock()">Entrar</button><div id="am"></div>`:`<h2>Administrador</h2><p class="mu">Ingresa la clave del docente.</p><input type="password" id="pw" style="max-width:240px"> <button class="go" onclick="unlock()">Entrar</button><div id="am"></div>`;return}
+ const gs={};RO.forEach(x=>{const k=x.g+x.s;gs[k]=(gs[k]||0)+1});
+ a.innerHTML=`<h2>Administrador</h2>
+ <p class="mu">${window.FBX?'☁️ Conectado a Firebase: los datos se guardan en la nube y se actualizan en tiempo real. <span id="live">· Evaluaciones recibidas: '+cnt()+'</span>':'💾 Modo local (sin Firebase): los datos se guardan solo en este navegador.'}</p>
+ <h3>1. Lista de estudiantes</h3><p class="mu">Cargados: <b>${RO.length}</b>${Object.keys(gs).sort().map(k=>` · ${k}: ${gs[k]}`).join('')}</p>
+ <input type="file" id="fx" accept=".xlsx,.xls" onchange="PF=this.files[0]"><br><button class="go" onclick="cargar()">⬆️ Cargar lista</button> <button onclick="plantilla()">⬇️ Descargar plantilla Excel</button> <button onclick="borrarLista()">🗑️ Borrar lista</button>
+ <h3>2. Preguntas por evaluación</h3><select id="nq" onchange="cfgN(+this.value)">${[1,2,3,4,5].map(x=>`<option ${x==CFG.n?'selected':''}>${x}</option>`).join('')}</select>
+ <h3>3. Progreso y evaluaciones</h3><button class="go" onclick="progreso()">⬇️ Descargar progreso de todos (Excel)</button>
+ ${window.FBX?`<h3>4. Sesión</h3><button onclick="salirAdm()">Cerrar sesión de administrador</button>`:`<h3>4. Clave de administrador</h3><input type="password" id="np" placeholder="Nueva clave" style="max-width:200px"> <button onclick="if($('#np').value.length>3){PIN=$('#np').value;sv('lab-pin',PIN);am('Clave cambiada.')}else am('Mínimo 4 caracteres.')">Cambiar</button>`}
+ <h3>5. Empezar de cero</h3><p class="mu">Elimina el progreso y las evaluaciones de todos los estudiantes. La lista de estudiantes se conserva.</p><button class="danger" onclick="reiniciar()">🧹 Eliminar todos los registros</button>
+ <div class="ro" id="am"></div>`}
+async function reiniciar(){if(prompt('Esto borra TODO el progreso y las evaluaciones. Escribe BORRAR para confirmar:')!=='BORRAR')return am('No se borró nada.');
+ try{if(window.FBX)await FBX.clear();else sv('lab-pr',{})}catch(x){return am('No se pudo borrar en la nube. Revisa tu sesión de administrador.')}
+ P={};sc={};A=E.map(()=>[]);R=E.map(()=>[]);ORD=[];ui();am('Registros eliminados. Se empezó de cero.')}
+function borrarLista(){if(!confirm('¿Borrar la lista cargada?'))return;RO=[];S=null;if(window.FBX)FBX.saveCfg({estudiantes:[]}).catch(()=>am('No se pudo guardar en la nube.'));else sv('lab-ro',RO);idui();aui()}
+function cfgN(n){CFG.n=n;ORD=[];A=E.map(()=>[]);if(window.FBX)FBX.saveCfg({n}).then(()=>am('Guardado en la nube: '+n+' preguntas por evaluación.')).catch(()=>am('No se pudo guardar en la nube.'));else{sv('lab-cfg',CFG);am('Guardado: '+n+' preguntas por evaluación.')}}
+async function unlock(){
+ if(window.FBX){try{await FBX.login($('#em').value.trim(),$('#pw').value)}catch(x){return am('Correo o clave incorrectos.')}
+  UN=FBX.watch(ds=>{P={};ds.forEach(x=>{const p=P[x.sid]||(P[x.sid]={a:x.a,no:x.no,g:x.g,s:x.sec,ex:{}});(p.ex[x.exp]=p.ex[x.exp]||[]).push({f:x.f,s:x.pts,n:x.n,m:x.m,d:x.d})});if($('#live'))$('#live').textContent='· Evaluaciones recibidas: '+cnt()},()=>{ADM=false;aui();am('Esta cuenta no tiene permiso de administrador.')});
+  ADM=true;aui();return}
+ if($('#pw').value===PIN){ADM=true;aui()}else am('Clave incorrecta.')}
+function salirAdm(){ADM=false;if(UN)UN();UN=null;P={};S=null;sc={};FBX.logout();aui();idui()}
+function parse(wb){const out=[];wb.SheetNames.forEach(n=>{let g=null,s=null,t='';XLSX.utils.sheet_to_json(wb.Sheets[n],{header:1,defval:null}).forEach(r=>{
+ const h=r.find(c=>typeof c==='string'&&/^\s*[1-6]\s*[A-Za-z]\s*[-–]/.test(c));
+ if(h){const m=h.match(/^\s*(\d)\s*([A-Za-z])\s*[-–]\s*(.*)$/);g=m[1];s=m[2].toUpperCase();t=m[3];return}
+ const i=r.findIndex(c=>typeof c==='number');
+ if(g&&i>=0&&typeof r[i+1]==='string'&&r[i+1].trim()){const nm=r[i+1].replace(/\s+/g,' ').trim(),dni=r[i+2]!=null?String(r[i+2]).trim():'';if(dni==='00000000')return;const k=nm.indexOf(',');
+  out.push({a:k<0?nm:nm.slice(0,k).trim(),no:k<0?'':nm.slice(k+1).trim(),dni,g,s,t,x:/NO ASISTE/i.test(String(r[i+3]||''))})}})});return out}
+function cargar(){const f=PF;if(!f)return am('Primero selecciona el archivo de la lista de estudiantes.');if(typeof XLSX==='undefined')return am('No se cargó la librería de Excel. Revisa tu conexión a internet.');
+ const rd=new FileReader();rd.onload=e=>{try{const o=parse(XLSX.read(new Uint8Array(e.target.result),{type:'array'}));
+  if(!o.length)return am('No se encontraron estudiantes. Usa la plantilla: cada bloque debe empezar con «1A - TUTOR...», seguido de N°, APELLIDOS Y NOMBRES y DNI.');
+  o.forEach(x=>{delete x.dni});RO=o;PF=null;S=null;
+  if(window.FBX)return FBX.saveCfg({estudiantes:o.map(x=>({a:x.a,no:x.no,g:x.g,s:x.s,t:x.t})),n:CFG.n}).then(()=>{idui();aui();am('Lista cargada en la nube: '+o.length+' estudiantes.')}).catch(()=>am('No se pudo guardar en la nube. Revisa tu sesión de administrador.'));
+  sv('lab-ro',RO);idui();aui();am('Lista cargada: '+o.length+' estudiantes.')}catch(x){am('No se pudo leer el archivo.')}};rd.readAsArrayBuffer(f)}
+function plantilla(){if(typeof XLSX==='undefined')return am('No se cargó la librería de Excel. Revisa tu conexión a internet.');
+ const rows=[[],[null,'LISTA DE ESTUDIANTES - "JOSAFI" - 2026']],mg=[{s:{r:1,c:1},e:{r:1,c:3}}];
+ ['1A','1B','2A','2B','3A','3B','4A','4B','5A','5B'].forEach((k,j)=>{const r0=rows.length;rows.push([null,k+' - TUTOR(A): PROF. NOMBRES Y APELLIDOS']);mg.push({s:{r:r0,c:1},e:{r:r0,c:3}});rows.push([null,'N°','APELLIDOS Y NOMBRES','DNI']);
+  for(let n=1;n<=15;n++)rows.push([null,n,j==0&&n==1?'APELLIDO1 APELLIDO2, NOMBRES':null,j==0&&n==1?'00000000':null]);rows.push([])});
+ const ws=XLSX.utils.aoa_to_sheet(rows);ws['!merges']=mg;ws['!cols']=[{wch:3},{wch:6},{wch:45},{wch:14},{wch:3},{wch:70}];
+ ['INSTRUCCIONES','1) Cada bloque empieza con grado y sección, un guion y el tutor. Ej.: 2B - TUTORA: PROF. ...','2) Escriba APELLIDOS Y NOMBRES así: APELLIDOS, NOMBRES (con coma) y el DNI.','3) La fila de ejemplo (DNI 00000000) se ignora al cargar: reemplácela o bórrela.','4) Si una sección tiene más de 15 estudiantes, inserte filas dentro del bloque.','5) Guarde como .xlsx y cárguelo en Administrador.'].forEach((t,i)=>{ws['F'+(i+2)]={t:'s',v:t}});
+ ws['!ref']=XLSX.utils.encode_range({s:{r:0,c:0},e:{r:rows.length,c:5}});
+ const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'LISTA GENERAL');XLSX.writeFile(wb,'plantilla-lista-estudiantes-JOSAFI-2026.xlsx')}
+function bord(ws,rows){const r=XLSX.utils.decode_range(ws['!ref']),b={style:'thin',color:{rgb:'000000'}};
+ for(let R=r.s.r;R<=r.e.r;R++)for(let C=r.s.c;C<=r.e.c;C++){const a=XLSX.utils.encode_cell({r:R,c:C}),c=ws[a]||(ws[a]={t:'s',v:''});c.s={border:{top:b,bottom:b,left:b,right:b},alignment:{vertical:'center',wrapText:true,horizontal:R<2?'center':'left'},font:{bold:R<2}}}
+ ws['!cols']=Array.from({length:r.e.c+1},(_,C)=>({wch:Math.min(42,Math.max(10,...rows.map((x,i)=>(i==0&&C>=2&&C<rows[0].length-1?'':String(x[C]??'')).length+2)))}))}
+function progreso(){if(typeof XLSX==='undefined')return am('No se cargó la librería de Excel. Revisa tu conexión a internet.');
+ const secs=[...new Set([...RO.map(x=>x.g+x.s),...Object.values(P).map(p=>p.g+p.s)])].sort();
+ if(!secs.length)return am('No hay estudiantes cargados ni evaluaciones guardadas.');
+ const H1=['Grado y sección','Apellidos y nombres',...E.flatMap(e=>[e.n,'']),'Puntaje total'],H2=['','',...E.flatMap(()=>['Puntaje','Mediciones']),''],L=2+2*E.length,
+ mg=[{s:{r:0,c:0},e:{r:1,c:0}},{s:{r:0,c:1},e:{r:1,c:1}},...E.map((e,i)=>({s:{r:0,c:2+2*i},e:{r:0,c:3+2*i}})),{s:{r:0,c:L},e:{r:1,c:L}}],wb=XLSX.utils.book_new();
+ secs.forEach(c=>{const r1=[H1,H2],ls=[...RO.filter(x=>x.g+x.s==c),...Object.values(P).filter(p=>p.g+p.s==c&&!RO.some(x=>key(x)==key(p)))];
+  ls.forEach(x=>{const p=P[key(x)],row=[c,x.a+', '+x.no];let t=0,m=0;E.forEach((e,i)=>{const b=bst(p&&p.ex[i]||[]);if(b)t+=b.s;m+=b?b.n:CFG.n;row.push(b?b.s+'/'+b.n:'',b?b.m:'')});row.push(t+'/'+m);r1.push(row)});
+  const ws=XLSX.utils.aoa_to_sheet(r1);ws['!merges']=mg;bord(ws,r1);XLSX.utils.book_append_sheet(wb,ws,c)});
+ XLSX.writeFile(wb,'progreso-JOSAFI-2026.xlsx')}
+function loop(ms){$('#sv').innerHTML=BG+E[ci].d(V[ci],ms/1000);requestAnimationFrame(loop)}
+addEventListener('fbready',async()=>{if(!window.FBX)return;P={};try{const c=await FBX.cfg();RO=(c&&c.estudiantes)||[];if(c&&c.n)CFG.n=c.n}catch(x){RO=[]}idui();ui();if(window.FBERR)msg('No se pudo conectar con Firebase ('+FBERR+'). Avisa al docente.')});
+idui();tabs();ui();requestAnimationFrame(loop);
+</script></body></html>
